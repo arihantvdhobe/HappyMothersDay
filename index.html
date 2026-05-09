@@ -1,0 +1,439 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Mother's Day ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#0f0f0f;
+    color:white;
+    overflow-x:hidden;
+}
+
+.hero{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7)),
+    url('mom3.jpg') center/cover;
+    position:relative;
+}
+
+.hero h1{
+    font-size:5rem;
+    animation:fadeIn 2s ease;
+}
+
+.hero p{
+    font-size:1.5rem;
+    margin-top:20px;
+    max-width:800px;
+    line-height:1.8;
+    animation:fadeIn 3s ease;
+}
+
+.scroll{
+    position:absolute;
+    bottom:30px;
+    font-size:1.1rem;
+    animation:bounce 1.5s infinite;
+}
+
+@keyframes bounce{
+    0%,100%{ transform:translateY(0);}
+    50%{ transform:translateY(-10px);}
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.section{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:80px 10%;
+    gap:60px;
+    flex-wrap:wrap;
+}
+
+.card{
+    width:380px;
+    height:500px;
+    position:relative;
+    cursor:pointer;
+    transform-style:preserve-3d;
+    transition:transform 1s;
+}
+
+.card.flip{
+    transform:rotateY(180deg);
+}
+
+.front, .back{
+    position:absolute;
+    width:100%;
+    height:100%;
+    border-radius:25px;
+    backface-visibility:hidden;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(255,255,255,0.2);
+}
+
+.front{
+    background:linear-gradient(135deg,#ff416c,#ff4b2b);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    font-size:1.6rem;
+    text-align:center;
+    padding:20px;
+}
+
+.front span{
+    font-size:5rem;
+}
+
+.back{
+    transform:rotateY(180deg);
+}
+
+.back img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.story{
+    max-width:500px;
+}
+
+.story h2{
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+.story p{
+    font-size:1.2rem;
+    line-height:2;
+    color:#ddd;
+}
+
+.love-section{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    background:linear-gradient(135deg,#ff0844,#ffb199);
+    position:relative;
+    overflow:hidden;
+}
+
+.love-box{
+    background:rgba(255,255,255,0.15);
+    padding:50px;
+    border-radius:30px;
+    text-align:center;
+    backdrop-filter:blur(10px);
+}
+
+.love-box h2{
+    font-size:3rem;
+}
+
+.buttons{
+    position:relative;
+    width:500px;
+    height:200px;
+    margin-top:40px;
+}
+
+button{
+    position:absolute;
+    padding:15px 40px;
+    border:none;
+    border-radius:40px;
+    font-size:1.3rem;
+    cursor:pointer;
+    transition:0.3s;
+    font-weight:bold;
+}
+
+#yesBtn{
+    left:100px;
+    background:#00c853;
+    color:white;
+}
+
+#yesBtn:hover{
+    transform:scale(1.1);
+}
+
+#noBtn{
+    left:300px;
+    background:#d50000;
+    color:white;
+}
+
+.final-message{
+    display:none;
+    margin-top:30px;
+    font-size:2rem;
+    animation:fadeIn 1s ease;
+}
+
+.heart{
+    position:absolute;
+    color:white;
+    animation:float 6s linear infinite;
+    opacity:0.8;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh) scale(0.5);
+    }
+    to{
+        transform:translateY(-10vh) scale(1.5);
+    }
+}
+
+.gallery{
+    padding:100px 5%;
+    background:#111;
+}
+
+.gallery h2{
+    text-align:center;
+    font-size:3rem;
+    margin-bottom:50px;
+}
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.gallery-grid img{
+    width:100%;
+    height:450px;
+    object-fit:cover;
+    border-radius:25px;
+    transition:0.5s;
+    cursor:pointer;
+}
+
+.gallery-grid img:hover{
+    transform:scale(1.05);
+}
+
+.lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.9);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:1000;
+}
+
+.lightbox img{
+    width:70%;
+    max-width:700px;
+    border-radius:20px;
+}
+
+@media(max-width:768px){
+    .hero h1{
+        font-size:3rem;
+    }
+
+    .buttons{
+        width:320px;
+    }
+
+    #yesBtn{
+        left:20px;
+    }
+
+    #noBtn{
+        left:180px;
+    }
+
+    .story h2{
+        font-size:2rem;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+    <h1>Happy Mother's Day ❤️</h1>
+    <p>
+        To the strongest woman in my life, thank you for every sacrifice,
+        every smile, every prayer and every moment of unconditional love.
+        Our home is beautiful because of you.
+    </p>
+
+    <div class="scroll">Scroll Down ↓</div>
+</section>
+
+<section class="section">
+
+    <div class="card" onclick="flipCard(this)">
+        <div class="front">
+            <span>💖</span>
+            Click To Reveal A Memory
+        </div>
+
+        <div class="back">
+            <img src="mom1.jpg">
+        </div>
+    </div>
+
+    <div class="story">
+        <h2>My Super Mom 🌸</h2>
+        <p>
+            Behind every happy memory of our family, there is your love,
+            your patience and your endless care.
+            You have always put us before yourself and made life beautiful.
+        </p>
+    </div>
+
+</section>
+
+<section class="section">
+
+    <div class="story">
+        <h2>Elegant & Strong ✨</h2>
+        <p>
+            You taught us kindness, strength, discipline and how to stay united as a family.
+            Your smile brings peace and happiness to everyone around you.
+        </p>
+    </div>
+
+    <div class="card" onclick="flipCard(this)">
+        <div class="front">
+            <span>❤️</span>
+            Tap To Open Memory
+        </div>
+
+        <div class="back">
+            <img src="mom2.jpg">
+        </div>
+    </div>
+
+</section>
+
+<section class="gallery">
+    <h2>Beautiful Moments 📸</h2>
+
+    <div class="gallery-grid">
+        <img src="mom1.jpg" onclick="openLightbox(this.src)">
+        <img src="mom2.jpg" onclick="openLightbox(this.src)">
+        <img src="mom3.jpg" onclick="openLightbox(this.src)">
+    </div>
+</section>
+
+<section class="love-section">
+
+    <div class="love-box">
+        <h2>Mom, do you love me? 🥺❤️</h2>
+
+        <div class="buttons">
+            <button id="yesBtn">Yes ❤️</button>
+            <button id="noBtn">No 😜</button>
+        </div>
+
+        <div class="final-message" id="message">
+            I knew it ❤️<br>
+            Love You Forever Mummy 🥰
+        </div>
+    </div>
+
+</section>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightboxImg">
+</div>
+
+<script>
+
+function flipCard(card){
+    card.classList.toggle('flip');
+    createHearts();
+}
+
+function openLightbox(src){
+    document.getElementById('lightbox').style.display='flex';
+    document.getElementById('lightboxImg').src=src;
+}
+
+function closeLightbox(){
+    document.getElementById('lightbox').style.display='none';
+}
+
+const noBtn=document.getElementById('noBtn');
+
+noBtn.addEventListener('mouseover',()=>{
+    const maxX=window.innerWidth-120;
+    const maxY=window.innerHeight-60;
+
+    noBtn.style.left=Math.random()*maxX+'px';
+    noBtn.style.top=Math.random()*maxY+'px';
+});
+
+document.getElementById('yesBtn').addEventListener('click',()=>{
+    document.getElementById('message').style.display='block';
+    createHearts();
+});
+
+function createHearts(){
+    for(let i=0;i<40;i++){
+        const heart=document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML='❤️';
+        heart.style.left=Math.random()*100+'vw';
+        heart.style.fontSize=(Math.random()*25+15)+'px';
+        heart.style.animationDuration=(Math.random()*3+3)+'s';
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+            heart.remove();
+        },6000);
+    }
+}
+
+</script>
+
+</body>
+</html>
